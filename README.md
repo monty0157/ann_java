@@ -1,2 +1,2 @@
-# rnn_java
-RNN build in vanilla Java
+# ann_java
+ANN build in vanilla Java
