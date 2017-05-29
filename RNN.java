@@ -1,9 +1,18 @@
+import java.util.ArrayList;
+import java.util.List;
 
 public class RNN {
 
-    private static double weightInit() {
-        double weight = Math.random();
-        return weight;
+    private static Double[] weightInit(int numberOfWeights) {
+        List<Double> weightsArrayList = new ArrayList<Double>();
+
+        for(int i = 0; i < numberOfWeights; i++) {
+            weightsArrayList.add(Math.random());
+        }
+        Double[] weights = new Double[weightsArrayList.size()];
+        weights = weightsArrayList.toArray(weights);
+
+        return weights;
     }
 
     private static double relu(double data) {
@@ -22,7 +31,7 @@ public class RNN {
         return averageLoss;
     }
 
-    private static double activation(double[] data, double[] weights) {
+    private static double activation(double[] data, Double[] weights) {
         double weightMultiplication = 0;
 
         for(int i = 0; i < data.length; i++) {
@@ -36,8 +45,8 @@ public class RNN {
     public static void main(String[] args) {
         double[] predictions = {0.38, 0.5, 0.9};
         double[] targets = {1, 1, 1};
-        double[] data = {10, 1};
-        double[] weights = {weightInit(), weightInit()};
+        double[] data = {10, 1, 2, 1, 4, 5,4};
+        Double[] weights = weightInit(7);
         System.out.println(cross_entropy(predictions, targets));
         System.out.println(activation(data, weights));
     }
