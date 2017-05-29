@@ -67,11 +67,15 @@ public class ANN {
         return units;
     }
 
-    private static Double[] outputLayer(int numberOfUnits, double[] data) {
+    private static Double[] outputLayer(int numberOfUnits, Double[] data) {
 
         //SOFTMAX ACTIVATION FUNCTION FOR OUTPUT PREDICTION
         List<Double> outputUnitsArrayList = new ArrayList<Double>();
 
+        System.out.println(data[0]);
+        System.out.println(data[1]);
+        System.out.println(data[2]);
+        System.out.println("Done");
         for (int i = 0; i < data.length; i++) {
             double exponentPlaceholder = 0;
 
@@ -95,12 +99,11 @@ public class ANN {
         double[] targets = {1, 1, 1};
         double[] data = {10, 1, 2, 1, 4, 5,4};
         Double[] weights = weightInit(7);
-        System.out.println(cross_entropy(predictions, targets));
-        System.out.println(activation(data, "relu", weights));
-        System.out.println(hiddenLayer(3, "relu", data)[0]);
-        System.out.println(hiddenLayer(3, "relu", data)[1]);
-        System.out.println(outputLayer(2, data)[0]);
-        System.out.println(outputLayer(2, data)[1]);
+
+        Double[] outputs = outputLayer(2, hiddenLayer(3, "relu", data));
+
+        System.out.println(outputs[0]);
+        System.out.println(outputs[1]);
     }
 }
 
